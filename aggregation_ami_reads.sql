@@ -1,0 +1,1 @@
+select meter_id,date(read_dt), avg(read_kwh), sum(read_kwh) from ami_reads group by meter_id, date(read_dt) limit 10;

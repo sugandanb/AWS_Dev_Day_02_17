@@ -1,0 +1,1 @@
+select format(count(*),0) from ami_reads;

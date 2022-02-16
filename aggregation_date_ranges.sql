@@ -1,0 +1,1 @@
+select avg(read_kwh), format(count(*),0) from  ami_reads where read_dt between '2019-02-01' and '2020-01-01';
