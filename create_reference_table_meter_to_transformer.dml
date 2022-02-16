@@ -1,0 +1,1 @@
+CREATE REFERENCE TABLE `meter_to_transformer` ( `meter_id` int(11) NOT NULL DEFAULT '0', `transformer_id` int(11) NOT NULL DEFAULT '0', `join_dt` datetime DEFAULT NULL, PRIMARY KEY (`meter_id`,`transformer_id`), KEY `index2` (`transformer_id`) ) AUTOSTATS_CARDINALITY_MODE=OFF AUTOSTATS_HISTOGRAM_MODE=OFF SQL_MODE='STRICT_ALL_TABLES'
