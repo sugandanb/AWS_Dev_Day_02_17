@@ -1,0 +1,3 @@
+start pipeline transformer_scada;
+start pipeline voltage_reads;
+start pipeline ami_reads;

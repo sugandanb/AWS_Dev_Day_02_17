@@ -1,0 +1,24 @@
+
+CREATE OR REPLACE PIPELINE `ami_reads`
+AS LOAD DATA KAFKA 'b-1-public.kafka-cluster-9082545.asf79h.c10.kafka.us-east-1.amazonaws.com:9196/ami_reads'
+CONFIG '{"security.protocol": "sasl_ssl","sasl.mechanism": "SCRAM-SHA-512"}'
+CREDENTIALS '{"sasl.username": "alice","sasl.password": "alice-secret"}'
+INTO PROCEDURE `data_validation`
+FIELDS TERMINATED BY ',' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
+CREATE OR REPLACE PIPELINE `voltage_reads`
+AS LOAD DATA KAFKA 'b-1-public.kafka-cluster-9082545.asf79h.c10.kafka.us-east-1.amazonaws.com:9196/voltage_reads'
+CONFIG '{"security.protocol": "sasl_ssl","sasl.mechanism": "SCRAM-SHA-512"}'
+CREDENTIALS '{"sasl.username": "alice","sasl.password": "alice-secret"}'
+INTO PROCEDURE `voltage_validation`
+FIELDS TERMINATED BY ',' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
+
+CREATE OR REPLACE PIPELINE `transformer_scada`
+AS LOAD DATA KAFKA 'b-1-public.kafka-cluster-9082545.asf79h.c10.kafka.us-east-1.amazonaws.com:9196/transformer_scada'
+CONFIG '{"security.protocol": "sasl_ssl","sasl.mechanism": "SCRAM-SHA-512"}'
+CREDENTIALS '{"sasl.username": "alice","sasl.password": "alice-secret"}'
+INTO table transformer_reads
+FIELDS TERMINATED BY ',' ENCLOSED BY '' ESCAPED BY '\\'
+LINES TERMINATED BY '\n' STARTING BY '';
