@@ -1,0 +1,1 @@
+CREATE TABLE `monthly_meter_aggregation` ( `meter_id` int(11) NOT NULL DEFAULT '0', `agg_date` date NOT NULL DEFAULT '0000-00-00 00:00:00', `m_average` decimal(12,2) DEFAULT NULL, `m_sum` decimal(12,2) DEFAULT NULL, `create_dt` datetime DEFAULT NULL, PRIMARY KEY (`meter_id`,`agg_date`), SHARD KEY `meter_id` (`meter_id`), KEY `agg_date` (`agg_date`) );
